@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EVAL Comparison Viewer</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+      integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div style="max-width: 1000px">
+      <h1>LLM Eval Comparison</h1>
+      <form class="pure-form pure-form-stacked">
+        <label for="file1Selector">File 1</label>
+        <select id="file1Selector"></select>
+
+        <label for="file2Selector">File 2</label>
+        <select id="file2Selector"></select>
+      </form>
+      <button
+        onclick="loadAndCompare()"
+        class="pure-button pure-button-primary"
+      >
+        Compare
+      </button>
+
+      <h4>Results</h4>      
+      <table id="resultsTable" class="pure-table">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Value from File 1</th>
+            <th>Value from File 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Comparison data will be inserted here -->
+        </tbody>
+      </table>
+
+      <h4>Config</h4>      
+      <table id="configTable" class="pure-table">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Value from File 1</th>
+            <th>Value from File 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Comparison data will be inserted here -->
+        </tbody>
+      </table>
+
+      <div id="filesContents">
+        <div>
+          <h4>File 1</h4>
+          <code id="file1Content"></code>
+        </div>
+        <div>
+          <h4>File 2</h4>
+          <code id="file2Content"></code>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

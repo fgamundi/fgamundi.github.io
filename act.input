@@ -1,0 +1,3 @@
+model_args=model=petals-team/StableBeluga2,base_url=http://91.218.247.13:9000/api/v1
+tasks=drop
+additional_args=--limit 10

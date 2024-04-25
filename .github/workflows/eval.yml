@@ -1,0 +1,54 @@
+name: LLM Evaluation
+
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: 'Name of the model to execute'
+        required: true
+      model_args:
+        description: 'Model args'
+        required: true
+      tasks:
+        description: 'Tasks to execute, separated by commas (e.g., "mmlu,gsm8k")'
+        required: true
+      additional_args:
+        description: 'e.g. --limit 10'
+        required: true
+env:
+  # Setting an environment variable with the value of a configuration variable
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        mkdir -p output
+
+    - name: Run Evaluation
+      run: |
+        lm_eval --model ${{ github.event.inputs.model }} \
+          --tasks ${{ github.event.inputs.tasks }} \
+          --model_args ${{ github.event.inputs.model_args }} ${{ github.event.inputs.additional_args }} \
+          --output_path ./output/$(date +%F:%R)-${{ github.event.inputs.tasks }}.json
+    - name: Commit log
+      uses: EndBug/add-and-commit@v9
+      with:
+        push: true
+
+    - name: Update results list
+      run: |
+        echo "$(date +%F:%R)-${{ github.event.inputs.tasks }}.json" >> results.list

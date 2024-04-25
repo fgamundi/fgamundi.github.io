@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+code {
+    white-space: pre-wrap;
+    float: left;
+    font-size: 0.8em !important;
+}
+
+#filesContents {
+    display: flex;
+    justify-content: space-between;
+}
