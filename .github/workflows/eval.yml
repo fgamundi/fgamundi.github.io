@@ -44,10 +44,12 @@ jobs:
           --tasks ${{ github.event.inputs.tasks }} \
           --model_args ${{ github.event.inputs.model_args }} ${{ github.event.inputs.additional_args }} \
           --output_path ./output/$(date +%F:%R)-${{ github.event.inputs.tasks }}.json
+
     - name: Commit log
       uses: EndBug/add-and-commit@v9
       with:
-        push: true
+        committer_name: GitHub Actions
+        committer_email: actions@github.com
 
     - name: Update results list
       run: |
