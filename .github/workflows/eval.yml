@@ -13,11 +13,8 @@ on:
         description: 'Tasks to execute, separated by commas (e.g., "mmlu,gsm8k")'
         required: true
       additional_args:
-        description: 'e.g. --limit 10'
+        description: 'Additional args (e.g. --limit 10)'
         required: true
-env:
-  # Setting an environment variable with the value of a configuration variable
-  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
 jobs:
   evaluate:
@@ -39,6 +36,9 @@ jobs:
         mkdir -p output
 
     - name: Run Evaluation
+      env:
+        # Setting an environment variable with the value of a configuration variable
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
         lm_eval --model ${{ github.event.inputs.model }} \
           --tasks ${{ github.event.inputs.tasks }} \
