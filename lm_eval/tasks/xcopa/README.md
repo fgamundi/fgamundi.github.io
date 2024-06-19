@@ -13,6 +13,17 @@ All the details about the creation of XCOPA and the implementation of the baseli
 
 Homepage: https://github.com/cambridgeltl/xcopa
 
+### Citation
+
+```
+@inproceedings{ponti2020xcopa,
+  title={{XCOPA: A} Multilingual Dataset for Causal Commonsense Reasoning},
+  author={Edoardo M. Ponti, Goran Glava\v{s}, Olga Majewska, Qianchu Liu, Ivan Vuli\'{c} and Anna Korhonen},
+  booktitle={Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  year={2020},
+  url={https://ducdauge.github.io/files/xcopa.pdf}
+}
+```
 
 ### Groups and Tasks
 
